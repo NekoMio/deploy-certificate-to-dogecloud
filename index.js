@@ -79,15 +79,13 @@ async function uploadCertificate() {
   const fullchain = fs.readFileSync(input.fullchainFile, "utf-8");
   const key = fs.readFileSync(input.keyFile, "utf-8");
 
-  Promise.all([await dogecloudApi("/cdn/cert/upload.json", {
+  const data = await dogecloudApi("/cdn/cert/upload.json", {
     note: "我的证书",
     cert: fullchain,
     private: key,
-  }, false).then(data => {
-    return data.id;
-  }).catch(err => {
-    throw new Error(`Failed to upload certificate: ${JSON.stringify(err)}`);
-  })]);
+  }, false)
+
+  return data.id;
 }
 
 async function deployCertificate(id) {
