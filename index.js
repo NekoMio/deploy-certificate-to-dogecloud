@@ -83,7 +83,7 @@ async function uploadCertificate() {
     note: "我的证书",
     cert: fullchain,
     private: key,
-  }, false).then(function (err, data) {
+  }, false, function (err, data) {
     if (err) {
       throw new Error(`Failed to upload certificate: ${JSON.stringify(err)}`);
     }
@@ -100,7 +100,7 @@ async function deployCertificate(id) {
 
     await dogecloudApi("/cdn/domain/config.json?domain="+domain, {
       cert_id: id,
-    }, true).then(function (err, data) {
+    }, true, function (err, data) {
       if (err) {
         throw new Error(`Failed to deploy certificate to domain "${domain}": ${JSON.stringify(err)}`);
       }
