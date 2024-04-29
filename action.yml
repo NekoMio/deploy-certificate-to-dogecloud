@@ -1,0 +1,24 @@
+name: Deploy SSL certificate to dogecloud
+description: Deploy SSL certificate to dogecloud CDN.
+branding:
+  icon: lock
+  color: green
+inputs:
+  accesskey:
+    description: The accesskey to login to dogecloud.
+    required: true
+  secretkey:
+    description: The secretkey to login to dogecloud.
+    required: true
+  fullchain-file:
+    description: The file path of the PEM fullchain certificate.
+    required: true
+  key-file:
+    description: The file path of the PEM private key file.
+    required: true
+  domains:
+    description: Enter a list of CDN or OSS domains you want to deploy the certificate to.
+    required: true
+runs:
+  using: node18
+  main: index.js
