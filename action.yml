@@ -20,5 +20,5 @@ inputs:
     description: Enter a list of CDN or OSS domains you want to deploy the certificate to.
     required: true
 runs:
-  using: node18
+  using: node20
   main: index.js
