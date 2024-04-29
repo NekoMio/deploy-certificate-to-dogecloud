@@ -85,7 +85,7 @@ async function uploadCertificate() {
     private: key,
   }, false).then(function (err, data) {
     if (err) {
-      throw new Error(`Failed to upload certificate: ${JSON.stringify(responseData)}`);
+      throw new Error(`Failed to upload certificate: ${JSON.stringify(err)}`);
     }
     // console.log(data);
     return data.id;
@@ -102,7 +102,7 @@ async function deployCertificate(id) {
       cert_id: id,
     }, true).then(function (err, data) {
       if (err) {
-        throw new Error(`Failed to deploy certificate to domain "${domain}": ${JSON.stringify(responseData)}`);
+        throw new Error(`Failed to deploy certificate to domain "${domain}": ${JSON.stringify(err)}`);
       }
     });
   }
