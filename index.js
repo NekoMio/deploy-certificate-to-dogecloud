@@ -2,6 +2,7 @@ var axios = require("axios");
 var crypto = require("crypto");
 var querystring = require("querystring");
 var core = require("@actions/core");
+var fs = require("fs")
 // import * as core from "@actions/core";
 
 const input = {
