@@ -95,17 +95,17 @@ async function uploadCertificate() {
 async function deployCertificate(id) {
   const domains = Array.from(new Set(input.domains.split(/\s+/).filter(x => x)));
   
-  for (const domain of domains) {
+  Promise.all(domains.map(async domain => {
     console.log(`Deploying certificate to domain ${domain}.`);
 
-    await dogecloudApi("/cdn/domain/config.json?domain="+domain, {
+    return dogecloudApi("/cdn/domain/config.json?domain="+domain, {
       cert_id: id,
     }, true, function (err, data) {
       if (err) {
         throw new Error(`Failed to deploy certificate to domain "${domain}": ${JSON.stringify(err)}`);
       }
     });
-  }
+  }))
 }
 
 async function main() {
