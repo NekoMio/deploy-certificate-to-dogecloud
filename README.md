@@ -18,24 +18,21 @@ jobs:
           # If you just commited and pushed your newly issued certificate to this repo in a previous job,
           # use `ref` to make sure checking out the newest commit in this job
           ref: ${{ github.ref }}
-      - uses: Menci/deploy-certificate-to-aliyun@beta-v2
+      - uses: NekoMio/deploy-certificate-to-dogecloud@main
         with:
-          # Subaccount
-          subaccount-username: ${{ secrets.UPYUN_SUBACCOUNT_USERNAME }}
-          subaccount-password: ${{ secrets.UPYUN_SUBACCOUNT_PASSWORD }}
+          # accesskey
+          accesskey: ${{ secrets.DOGECLOUD_ACCESSKEY }} # 又拍云账户用户名
+          secretkey: ${{ secrets.DOGECLOUD_SECRETKEY }} # 又拍云账户密码
 
           # Specify PEM fullchain file
           fullchain-file: ${{ env.FILE_FULLCHAIN }}
           # Specify PEM private key file
           key-file: ${{ env.FILE_KEY }}
 
-          # Deploy to CDN or OSS
-          cdn-domains: |
+          # Deploy to CDN
+          domains: |
             cdn1.example.com
             cdn2.example.com
             oss1.example.com
             oss2.example.com
-          
-          # Delete ALL unused certificates after deployment
-          delete-unused-certificates: true
 ```
