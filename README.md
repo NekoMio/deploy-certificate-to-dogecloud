@@ -1,6 +1,6 @@
-# GitHub Action for Deploying SSL certificate to Upyun
+# GitHub Action for Deploying SSL certificate to Dogecloud
 
-Deploy SSL certificate to Upyun CDN or OSS.
+Deploy SSL certificate to dogecloud CDN.
 
 # Usage
 
